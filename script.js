@@ -23,7 +23,6 @@ next.addEventListener("click", () => {
 window.addEventListener("resize", () => {
   updateCarousel(); // Recalculate the offset on window resize
 });
-
 const words = [
   "Happy Customers Can Make a Bussiness",
   "To Make Creative",
