@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iPhone Details - Apple Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+  <!-- Navbar Section -->
+  <section>
+    <nav class="text-black w-full shadow-sm fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-lg border-b border-gray-200" id="glass">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="index.html" class="flex items-center text-gray-700 hover:text-black font-medium transition-colors">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to Store
+          </a>
+          <!-- Cart Icon -->
+          <button onclick="toggleCart()" class="relative hover:text-gray-500 hover:scale-110 transition-transform duration-300">
+            <img src="./images/shopping-bag.png" alt="Bag" class="w-8 h-8 md:w-10 md:h-10" />
+            <span class="cart-badge hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!-- Product Details Section -->
+  <section class="pt-28 pb-12 px-4 min-h-screen flex items-center">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden w-full">
+      <div class="flex flex-col md:flex-row">
+        <!-- Image Section -->
+        <div class="md:w-1/2 p-8 md:p-16 flex justify-center items-center bg-gray-50 border-b md:border-b-0 md:border-r border-gray-100">
+          <img id="detail-image" src="" alt="iPhone" class="max-w-full h-auto max-h-[500px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700" />
+        </div>
+        
+        <!-- Info Section -->
+        <div class="md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+          <h1 id="detail-name" class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Loading...</h1>
+          <p id="detail-price" class="text-2xl text-gray-500 mb-8 font-medium"></p>
+          
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 border-b pb-2 mb-3">Hardware</h3>
+              <p id="detail-hardware" class="text-gray-700 leading-relaxed text-lg"></p>
+            </div>
+            
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 border-b pb-2 mb-3">Software</h3>
+              <p id="detail-software" class="text-gray-700 leading-relaxed text-lg"></p>
+            </div>
+            
+            <div class="pt-6">
+              <button id="add-to-bag-btn" onclick="addToBag()" class="w-full bg-black text-white text-lg font-semibold py-4 px-6 rounded-full hover:bg-gray-800 transition-colors duration-300 shadow-md flex justify-center items-center">
+                <span>Add to Bag</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // iPhone Data Store
+    const iphoneData = {
+      "16pro": {
+        name: "iPhone 16 Pro",
+        image: "./images/iPhone_16_Pro_Max_Desert_Titanium_PDP_Image_Position_1__en-IN_6313d2b8-ef64-40f0-b60a-d77be47fd058.webp",
+        price: "From ₹1,09,900",
+        hardware: "A18 Pro chip. New 48MP Ultra Wide camera. Grade 5 Titanium design with the new Camera Control. Battery life up to 27 hours video playback.",
+        software: "iOS 18 with Apple Intelligence. More customization for Home Screen and Control Center."
+      },
+      "15promax": {
+        name: "iPhone 15 Pro Max",
+        image: "./images/Apple-iPhone-15-Pro-Max_-blue-titanium_Yoast-image-packshot-review.jpg",
+        price: "From ₹72,529",
+        hardware: "A17 Pro chip. 5x Telephoto camera. Aerospace-grade titanium design. USB-C with USB 3 speeds.",
+        software: "iOS 17 featuring StandBy, NameDrop, and interactive widgets."
+      },
+      "14promax": {
+        name: "iPhone 14 Pro Max",
+        image: "./images/Apple-iPhone-14-Pro_FINAL_featured-image-packshot-review-1.jpg",
+        price: "From ₹1,44,900",
+        hardware: "A16 Bionic chip. 48MP Main camera. Dynamic Island. Always-On display. Crash Detection.",
+        software: "iOS 16 with customizable Lock Screen and advanced focus modes."
+      },
+      "13promax": {
+        name: "iPhone 13 Pro Max",
+        image: "./images/1661760291_k9j.webp",
+        price: "From ₹65,000",
+        hardware: "A15 Bionic chip. ProMotion technology with adaptive refresh rates up to 120Hz. Macro photography.",
+        software: "iOS 15 featuring SharePlay, Live Text, and redesigned Maps."
+      },
+      "12promax": {
+        name: "iPhone 12 Pro Max",
+        image: "./images/Silver-7923-2505.jpg",
+        price: "From ₹37,399",
+        hardware: "A14 Bionic chip. 5G capable. Ceramic Shield front cover. LiDAR Scanner for improved AR experiences.",
+        software: "iOS 14 introducing App Library and Home Screen widgets."
+      },
+      "11promax": {
+        name: "iPhone 11 Pro Max",
+        image: "./images/images (2).jpeg",
+        price: "From ₹35,000",
+        hardware: "A13 Bionic chip. Triple-camera system (Ultra Wide, Wide, Telephoto). Night mode. Super Retina XDR display.",
+        software: "iOS 13 with Dark Mode and advanced privacy features."
+      }
+    };
+
+    // Get model from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const model = urlParams.get('model');
+
+    const data = iphoneData[model];
+
+    if (data) {
+      document.getElementById('detail-name').textContent = data.name;
+      document.getElementById('detail-image').src = data.image;
+      document.getElementById('detail-price').textContent = data.price;
+      document.getElementById('detail-hardware').textContent = data.hardware;
+      document.getElementById('detail-software').textContent = data.software;
+      document.title = data.name + " - Apple Store";
+    } else {
+      document.getElementById('detail-name').textContent = "Product Not Found";
+      document.getElementById('detail-hardware').textContent = "We couldn't find the details for this product.";
+    }
+
+    // Add to bag functionality
+    function addToBag() {
+      const btn = document.getElementById('add-to-bag-btn');
+      
+      // Store original content
+      const originalText = "<span>Add to Bag</span>";
+      
+      // Call the cart function to save data
+      if (data) {
+        addItemToCart(data);
+      }
+      
+      // Change to success state
+      btn.innerHTML = `<svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg> Added to Bag`;
+      btn.classList.remove('bg-black', 'hover:bg-gray-800');
+      btn.classList.add('bg-green-600', 'hover:bg-green-700');
+      
+      // Reset button after 2.5 seconds
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+        btn.classList.add('bg-black', 'hover:bg-gray-800');
+      }, 2500);
+    }
+  </script>
+
+  <!-- Cart Overlay & Panel -->
+  <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black bg-opacity-50 z-[90] hidden opacity-0 transition-opacity duration-300"></div>
+  <div id="cart-panel" class="fixed right-0 top-0 h-full w-full sm:w-[400px] bg-white shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+      <h2 class="text-2xl font-bold text-gray-900">Your Bag</h2>
+      <button onclick="toggleCart()" class="text-gray-400 hover:text-black bg-white rounded-full p-2 shadow-sm transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+      <!-- Items dynamically populated here -->
+    </div>
+    <div class="p-6 border-t border-gray-200 bg-gray-50">
+      <div class="flex justify-between items-center mb-6 text-xl font-bold text-gray-900">
+        <span>Total</span>
+        <span id="cart-total">₹0</span>
+      </div>
+      <button onclick="window.location.href='checkout.html'" class="w-full bg-black text-white text-lg font-semibold py-4 rounded-full hover:bg-gray-800 transition-colors shadow-lg">Check Out</button>
+    </div>
+  </div>
+
+  <script src="cart.js"></script>
+</body>
+</html>

@@ -7,7 +7,6 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 body {
-  height: 2000px;
   scroll-behavior: smooth;
 }
 #happy {

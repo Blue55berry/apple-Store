@@ -12,7 +12,7 @@
     <!-- Navbar Section -->
     <section>
       <nav
-        class="text-black container mx-auto px-4 sm:px-6 lg:px-8 shadow-md mt-4 fixed top-0 left-0 right-0 z-10 bg-white bg-opacity-80 backdrop-blur-lg rounded-lg border border-gray-200"
+        class="text-black w-full shadow-sm fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-80 backdrop-blur-lg border-b border-gray-200"
         id="glass"
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,93 +25,99 @@
                   alt=""
                   class="md:w-15 md:h-12 h-10 w-13"
               /></a>
-              <a href="#mac" class="hover:text-gray-500 hidden sm:block">Mac</a>
-              <a href="#iphone" class="hover:text-gray-500 hidden sm:block"
-                >iPhone</a
-              >
-              <a href="#watch" class="hover:text-gray-500 hidden sm:block"
-                >Watch</a
-              >
+              <div class="hidden sm:flex space-x-3 items-center ml-4">
+                <a href="#mac" class="hover:text-gray-500">Mac</a>
+                <a href="#iphone" class="hover:text-gray-500">iPhone</a>
+                <a href="#watch" class="hover:text-gray-500">Watch</a>
+              </div>
             </div>
 
             <!-- Right Section -->
             <div class="flex items-center space-x-4">
-              <a href="#support" class="hover:text-gray-500 hidden sm:block"
-                >Support</a
-              >
-              <a href="#" class="hover:text-gray-500"
-                ><img
-                  src="./images/shopping-bag.png"
-                  alt=""
-                  class="w-10 h-10 hover:scale-110 hover:duration-700"
-              /></a>
+              <div class="hidden sm:flex items-center">
+                <a href="#support" class="hover:text-gray-500">Support</a>
+              </div>
+              <button onclick="toggleCart()" class="relative hover:text-gray-500 hover:scale-110 transition-transform duration-300">
+                <img src="./images/shopping-bag.png" alt="Bag" class="w-10 h-10" />
+                <span class="cart-badge hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+              </button>
+              <!-- Mobile menu button -->
+              <div class="sm:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none p-2">
+                  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="sm:hidden hidden bg-white border-t border-gray-200 rounded-b-lg shadow-lg absolute w-full left-0 top-full transition-all duration-300 ease-in-out">
+          <div class="px-4 pt-2 pb-4 space-y-2">
+            <a href="#mac" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-100">Mac</a>
+            <a href="#iphone" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-100">iPhone</a>
+            <a href="#watch" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-100">Watch</a>
+            <a href="#support" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-black hover:bg-gray-100">Support</a>
           </div>
         </div>
       </nav>
     </section>
-    <!-- Airpods Section -->
-    <section class="bg-gray-100 pt-20">
-      <div class="container mx-auto px-4 py-10 relative h-screen">
-        <div class="flex flex-wrap">
-          <!-- Apple Headset Image -->
-          <div data-aos="fade-up" class="w-full">
-            <img
-              src="./images/Airpods-max-starlight-1.png"
-              alt="Apple Headset"
-              class="relative w-3/4 sm:w-1/2 h-auto mx-auto my-10"
-              data-aos="zoom-in"
-              data-aos-duration="4000"
-              id="Image"
-            />
-          </div>
-
-          <!-- Welcome Text -->
-          <div
-            class="absolute inset-0 flex justify-center items-center"
-            data-aos="fade-down"
+    <!-- Airpods Section & Color Icons -->
+    <section class="bg-gray-100 pt-20 relative overflow-hidden">
+      <div class="container mx-auto px-4 py-10 relative min-h-[75vh] flex flex-col justify-center">
+        <!-- Apple Headset Image -->
+        <div data-aos="fade-up" class="w-full flex justify-center relative z-10">
+          <img
+            src="./images/Airpods-max-starlight-1.png"
+            alt="Apple Headset"
+            class="relative w-full max-w-[350px] sm:max-w-[500px] aspect-square object-contain mx-auto my-10"
+            data-aos="zoom-in"
             data-aos-duration="4000"
-            data-aos-easing="linear"
-          >
-            <h1
-              class="text-4xl md:text-7xl font-bold text-gray-400 text-center"
-              id="title"
-            >
-              Welcome to Apple Store
-            </h1>
-          </div>
+            id="Image"
+          />
         </div>
-      </div>
-    </section>
-    <!--color icons-->
-    <section class="mt-10 mb-10 px-4">
-      <div class="container mx-auto relative"></div>
-      <div
-        class="hidden md:flex flex-col items-center space-y-4 absolute top-1/2 xl:left-28 transform -translate-y-1/2 md:left-5"
-      >
-        <button
-          class="px-4 py-4 rounded-full font-bold"
-          id="gold"
-          onclick="gold()"
-        ></button>
-        <button
-          class="bg-gray-300 px-4 py-4 rounded-full font-bold"
-          onclick="gary()"
-        ></button>
-        <!-- <button
-          class="bg-gray-800 px-4 py-4 rounded-full font-bold"
-          onclick="black()"
-        ></button> -->
-        <button
-          class="bg-purple-200 px-4 py-4 rounded-full font-bold"
-          onclick="purple()"
-          id="purple"
-        ></button>
-        <button
-          class="px-4 py-4 rounded-full font-bold"
-          onclick="pink()"
-          id="pink"
-        ></button>
+
+        <!-- Welcome Text -->
+        <div
+          class="absolute inset-0 flex justify-center items-center pointer-events-none z-0"
+          data-aos="fade-down"
+          data-aos-duration="4000"
+          data-aos-easing="linear"
+        >
+          <h1
+            class="text-4xl md:text-7xl font-bold text-gray-400 text-center"
+            id="title"
+          >
+            Welcome to Apple Store
+          </h1>
+        </div>
+
+        <!-- Color Icons (Responsive) -->
+        <div
+          class="flex md:flex-col justify-center items-center space-x-6 md:space-x-0 md:space-y-4 absolute bottom-0 md:bottom-auto md:top-1/2 left-0 right-0 md:right-auto md:left-5 xl:left-28 transform md:-translate-y-1/2 z-20 pb-5 md:pb-0"
+        >
+          <button
+            class="w-10 h-10 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 border-2 border-transparent hover:border-gray-400"
+            id="gold"
+            onclick="gold()"
+          ></button>
+          <button
+            class="w-10 h-10 bg-gray-300 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 border-2 border-transparent hover:border-gray-400"
+            onclick="gary()"
+          ></button>
+          <button
+            class="w-10 h-10 bg-purple-200 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 border-2 border-transparent hover:border-gray-400"
+            onclick="purple()"
+            id="purple"
+          ></button>
+          <button
+            class="w-10 h-10 rounded-full shadow-lg hover:scale-110 transition-transform duration-300 border-2 border-transparent hover:border-gray-400"
+            onclick="pink()"
+            id="pink"
+          ></button>
+        </div>
       </div>
     </section>
     <!-- Product Grid Section of Mac Book-->
@@ -122,8 +128,8 @@
         </h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Product Card -->
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          <a href="mac-details.html?model=macbook-rosegold"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer block"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -131,17 +137,17 @@
             <img
               src="./images/51OHRon5qeL.jpg"
               alt="MacBook Rose Gold"
-              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               MacBook - (Rose Gold)
             </h2>
-          </div>
+          </a>
           <!-- Repeat Product Card -->
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          <a href="mac-details.html?model=macbook-air"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer block"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -149,16 +155,16 @@
             <img
               src="./images/mba15-skyblue-select-202503.jpeg"
               alt="MacBook Air"
-              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               MacBook Air
             </h2>
-          </div>
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          </a>
+          <a href="mac-details.html?model=macbook-pro"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer block"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -166,14 +172,14 @@
             <img
               src="./images/Apple_16-inch-MacBook-Pro_111319_big.jpg.large.jpg"
               alt="MacBook Pro"
-              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               MacBook Pro
             </h2>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -185,8 +191,9 @@
         </h1>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Product Card -->
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          <a
+            href="iphone-details.html?model=16pro"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -194,17 +201,18 @@
             <img
               src="./images/iPhone_16_Pro_Max_Desert_Titanium_PDP_Image_Position_1__en-IN_6313d2b8-ef64-40f0-b60a-d77be47fd058.webp"
               alt="iPhone 16 Pro"
-              class="w-full h-auto object-cover rounded-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-auto object-cover rounded-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               iPhone 16 Pro
             </h2>
-          </div>
+          </a>
           <!-- Repeat Product ipones -->
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          <a
+            href="iphone-details.html?model=15promax"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -212,16 +220,17 @@
             <img
               src="./images/Apple-iPhone-15-Pro-Max_-blue-titanium_Yoast-image-packshot-review.jpg"
               alt="iPhone 15 Pro Max"
-              class="w-full h-80 mt-6 object-cover rounded-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-80 mt-6 object-cover rounded-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               iPhone 15 Pro Max
             </h2>
-          </div>
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          </a>
+          <a
+            href="iphone-details.html?model=14promax"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -229,16 +238,17 @@
             <img
               src="./images/Apple-iPhone-14-Pro_FINAL_featured-image-packshot-review-1.jpg"
               alt="iPhone 14 Pro Max"
-              class="w-full h-80 mt-6 object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-80 mt-6 object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               iPhone 14 Pro Max
             </h2>
-          </div>
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          </a>
+          <a
+            href="iphone-details.html?model=13promax"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -246,16 +256,17 @@
             <img
               src="./images/1661760291_k9j.webp"
               alt="iPhone 13 Pro Max"
-              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               iPhone 13 Pro Max
             </h2>
-          </div>
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          </a>
+          <a
+            href="iphone-details.html?model=12promax"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -263,16 +274,17 @@
             <img
               src="./images/Silver-7923-2505.jpg"
               alt="iPhone 12 Pro Max"
-              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               iPhone 12 Pro Max
             </h2>
-          </div>
-          <div
-            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group"
+          </a>
+          <a
+            href="iphone-details.html?model=11promax"
+            class="flex flex-col items-center rounded-xl p-4 bg-white shadow-lg group cursor-pointer"
             data-aos="fade-up"
             data-aos-duration="600"
             data-aos-easing="linear"
@@ -280,14 +292,14 @@
             <img
               src="./images/images (2).jpeg"
               alt="iPhone 11 Pro Max"
-              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700 hover:cursor-pointer"
+              class="w-full h-auto object-cover rounded-t-xl group-hover:scale-105 group-hover:duration-700"
             />
             <h2
-              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center"
+              class="text-2xl sm:text-3xl mt-4 font-medium text-black text-center group-hover:text-gray-600 transition-colors"
             >
               iPhone 11 Pro Max
             </h2>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -454,5 +466,27 @@
       AOS.init();
     </script>
     <script src="script.js"></script>
+    <script src="cart.js"></script>
+
+    <!-- Cart Overlay & Panel -->
+    <div id="cart-overlay" onclick="toggleCart()" class="fixed inset-0 bg-black bg-opacity-50 z-[90] hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="cart-panel" class="fixed right-0 top-0 h-full w-full sm:w-[400px] bg-white shadow-2xl z-[100] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+      <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+        <h2 class="text-2xl font-bold text-gray-900">Your Bag</h2>
+        <button onclick="toggleCart()" class="text-gray-400 hover:text-black bg-white rounded-full p-2 shadow-sm transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+        <!-- Items dynamically populated here -->
+      </div>
+      <div class="p-6 border-t border-gray-200 bg-gray-50">
+        <div class="flex justify-between items-center mb-6 text-xl font-bold text-gray-900">
+          <span>Total</span>
+          <span id="cart-total">₹0</span>
+        </div>
+        <button onclick="window.location.href='checkout.html'" class="w-full bg-black text-white text-lg font-semibold py-4 rounded-full hover:bg-gray-800 transition-colors shadow-lg">Check Out</button>
+      </div>
+    </div>
   </body>
 </html>

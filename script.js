@@ -63,159 +63,96 @@ function type() {
 
 type();
 
-// Initialize AOS library
+// Smooth Animation Logic for Headset Colors
+function updateHeadset(imageSrc, text, color) {
+  const imageElement = document.getElementById("Image");
+  const titleElement = document.getElementById("title");
+
+  // Add transition styling for fading out
+  imageElement.style.transition = "opacity 0.4s ease-in-out, transform 0.4s ease-in-out";
+  titleElement.style.transition = "opacity 0.3s ease-in, transform 0.3s ease-in, letter-spacing 0.3s ease-in";
+
+  // 1. Fade out Image (scale down)
+  imageElement.style.opacity = "0";
+  imageElement.style.transform = "scale(0.95)";
+
+  // 2. Fade out Text differently (slide up and space out)
+  titleElement.style.opacity = "0";
+  titleElement.style.transform = "translateY(-30px)";
+  titleElement.style.letterSpacing = "8px";
+
+  // Wait for fade out to complete, then change content and fade back in
+  setTimeout(() => {
+    // Update Image
+    imageElement.src = imageSrc;
+
+    // Update Text
+    titleElement.textContent = text;
+    titleElement.style.color = color;
+
+    // Prepare text for sliding in from below by disabling transition instantly
+    titleElement.style.transition = "none";
+    titleElement.style.transform = "translateY(30px)";
+    titleElement.style.letterSpacing = "-2px";
+
+    // Trigger reflow to apply the instant reposition
+    void titleElement.offsetWidth;
+
+    // Re-enable transitions with a bouncy effect for the text
+    titleElement.style.transition = "opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), letter-spacing 0.5s ease-out";
+
+    // Fade in Image
+    imageElement.style.opacity = "1";
+    imageElement.style.transform = "scale(1)";
+
+    // Fade in Text
+    titleElement.style.opacity = "1";
+    titleElement.style.transform = "translateY(0)";
+    titleElement.style.letterSpacing = "normal";
+  }, 350);
+}
+
 function gold() {
-  const imageElement = document.getElementById("Image");
-  imageElement.src = "./images/Airpods-max-starlight-1.png";
-  const titleElement = document.getElementById("title"); // Assuming there's an element with id "title"
-
-  // Ensure the image maintains its size and position
-  imageElement.style.width = "520px"; // Set a fixed width
-  imageElement.style.height = "auto"; // Maintain aspect ratio
-  imageElement.style.objectFit = "cover"; // Ensure the image fits within its container
-
-  // Remove existing AOS attributes if any
-  imageElement.removeAttribute("data-aos");
-
-  // Add a CSS class for animation
-  imageElement.classList.remove("aos-animate"); // Reset animation
-  imageElement.classList.add("custom-zoom-in");
-
-  // Trigger reflow to restart animation
-  void imageElement.offsetWidth;
-  titleElement.textContent = "Apple Airpods Max Rose Gold";
-  titleElement.style.color = " rgba(235, 218, 123, 0.74)";
-  // Add the animation class back
-  imageElement.classList.add("aos-animate");
-  document.addEventListener("DOMContentLoaded", () => {
-    AOS.init();
-  });
+  updateHeadset("./images/Airpods-max-starlight-1.png", "Apple Airpods Max Rose Gold", "rgba(235, 218, 123, 0.74)");
 }
+
 function gary() {
-  const imageElement = document.getElementById("Image");
-  imageElement.src = "./images/300px-AirPods_Max.webp";
-  const titleElement = document.getElementById("title"); // Assuming there's an element with id "title"
-
-  // Ensure the image maintains its size and position
-  imageElement.style.width = "500px"; // Set a fixed width
-  imageElement.style.height = "auto"; // Maintain aspect ratio
-  imageElement.style.objectFit = "cover"; // Ensure the image fits within its container
-
-  // Remove existing AOS attributes if any
-  imageElement.removeAttribute("data-aos");
-
-  // Add a CSS class for animation
-  imageElement.classList.remove("aos-animate"); // Reset animation
-  imageElement.classList.add("custom-zoom-in");
-
-  // Trigger reflow to restart animation
-  void imageElement.offsetWidth;
-  titleElement.textContent = "Apple Airpods Max Gary ";
-  titleElement.style.color = " rgb(170, 165, 165)";
-  // Add the animation class back
-  imageElement.classList.add("aos-animate");
-  document.addEventListener("DOMContentLoaded", () => {
-    AOS.init();
-  });
+  updateHeadset("./images/300px-AirPods_Max.webp", "Apple Airpods Max Gary", "rgb(170, 165, 165)");
 }
-// function black() {
-//   const imageElement = document.getElementById("Image");
-//   const titleElement = document.getElementById("title"); // Assuming there's an element with id "title"
 
-//   imageElement.src = "./images/new-project-28.avif";
-
-//   // Ensure the image maintains its size and position
-//   imageElement.style.width = "750px"; // Set a fixed width
-//   imageElement.style.height = "auto"; // Maintain aspect ratio
-//   imageElement.style.objectFit = "cover"; // Ensure the image fits within its container
-//   imageElement.style.marginTop = "10px"; // Decrease the margin-top height
-
-//   // Remove existing AOS attributes if any
-//   imageElement.removeAttribute("data-aos");
-
-//   // Add a CSS class for animation
-//   imageElement.classList.remove("aos-animate"); // Reset animation
-//   imageElement.classList.add("custom-zoom-in");
-
-//   // Trigger reflow to restart animation
-//   void imageElement.offsetWidth;
-
-//   // Add the animation class back
-//   imageElement.classList.add("aos-animate");
-
-//   // Dynamically change the title
-//   titleElement.textContent = "Apple Airpods Max black "; // Update the title text
-
-//   document.addEventListener("DOMContentLoaded", () => {
-//     AOS.init();
-//   });
-// }
 function purple() {
-  const imageElement = document.getElementById("Image");
-  const titleElement = document.getElementById("title"); // Assuming there's an element with id "title"
-
-  imageElement.src = "./images/309246_0_d21pnw.png";
-
-  // Ensure the image maintains its size and position
-  imageElement.style.width = "650px"; // Set a fixed width
-  imageElement.style.height = "auto"; // Maintain aspect ratio
-  imageElement.style.objectFit = "cover"; // Ensure the image fits within its container
-  imageElement.style.marginTop = "12px"; // Decrease the margin-top height
-
-  // Remove existing AOS attributes if any
-  imageElement.removeAttribute("data-aos");
-
-  // Add a CSS class for animation
-  imageElement.classList.remove("aos-animate"); // Reset animation
-  imageElement.classList.add("custom-zoom-in");
-
-  // Trigger reflow to restart animation
-  void imageElement.offsetWidth;
-
-  // Add the animation class back
-  imageElement.classList.add("aos-animate");
-
-  // Dynamically change the title
-  titleElement.textContent = "Apple Airpods Max Purple ";
-  titleElement.style.color = " rgb(235, 155, 235)"; // Update the title text
-
-  document.addEventListener("DOMContentLoaded", () => {
-    AOS.init();
-  });
+  updateHeadset("./images/309246_0_d21pnw.png", "Apple Airpods Max Purple", "rgb(235, 155, 235)");
 }
+
 function pink() {
-  const imageElement = document.getElementById("Image");
-  const titleElement = document.getElementById("title"); // Assuming there's an element with id "title"
-
-  imageElement.src =
-    "./images/982ff5_a70939a331b241a4a7d7eecb33196660~mv2.avif";
-
-  // Ensure the image maintains its size and position
-  imageElement.style.width = "950px"; // Set a fixed width
-  imageElement.style.height = "auto"; // Maintain aspect ratio
-  imageElement.style.objectFit = "cover"; // Ensure the image fits within its container
-  imageElement.style.marginTop = "50px"; // Decrease the margin-top height
-
-  // Remove existing AOS attributes if any
-  imageElement.removeAttribute("data-aos");
-
-  // Add a CSS class for animation
-  imageElement.classList.remove("aos-animate"); // Reset animation
-  imageElement.classList.add("custom-zoom-in");
-
-  // Trigger reflow to restart animation
-  void imageElement.offsetWidth;
-
-  // Add the animation class back
-  imageElement.classList.add("aos-animate");
-
-  // Dynamically change the title
-  titleElement.textContent = "Apple Airpods Max Pink "; // Update the title text
-
-  // Dynamically change the text color
-  titleElement.style.color = "rgb(231, 63, 91)"; // Set the text color to match the theme
-
-  document.addEventListener("DOMContentLoaded", () => {
-    AOS.init();
-  });
+  updateHeadset("./images/982ff5_a70939a331b241a4a7d7eecb33196660~mv2.avif", "Apple Airpods Max Pink", "rgb(231, 63, 91)");
 }
+
+// Mobile Menu Toggle Logic
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      
+      // Toggle icon between hamburger and close (X)
+      if (mobileMenu.classList.contains("hidden")) {
+        menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+      } else {
+        menuIcon.setAttribute("d", "M6 18L18 6M6 6l12 12");
+      }
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+        menuIcon.setAttribute("d", "M4 6h16M4 12h16M4 18h16");
+      });
+    });
+  }
+});
